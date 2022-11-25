@@ -1,0 +1,68 @@
+main
+  .container-fluid.px-4
+    h1.mt-4
+      | Dashboard
+    ol.breadcrumb.mb-4
+      li.breadcrumb-item.active
+        | Dashboard
+    .row
+      .col-xl-3.col-md-6
+        .card.bg-primary.text-white.mb-4
+          .card-body
+            | Primary Card
+          .card-footer.d-flex.align-items-center.justify-content-between
+            a.small.text-white.stretched-link[href="#"]
+              | View Details
+            .small.text-white
+      .col-xl-3.col-md-6
+        .card.bg-warning.text-white.mb-4
+          .card-body
+            | Warning Card
+          .card-footer.d-flex.align-items-center.justify-content-between
+            a.small.text-white.stretched-link[href="#"]
+              | View Details
+            .small.text-white
+      .col-xl-3.col-md-6
+        .card.bg-success.text-white.mb-4
+          .card-body
+            | Success Card
+          .card-footer.d-flex.align-items-center.justify-content-between
+            a.small.text-white.stretched-link[href="#"]
+              | View Details
+            .small.text-white
+      .col-xl-3.col-md-6
+        .card.bg-danger.text-white.mb-4
+          .card-body
+            | Danger Card
+          .card-footer.d-flex.align-items-center.justify-content-between
+            a.small.text-white.stretched-link[href="#"]
+              | View Details
+            .small.text-white
+    .row
+      .col-xl-6
+        .card.mb-4
+          .card-header
+            |  Area Chart Example 
+          .card-body
+            .chartjs-size-monitor
+              .chartjs-size-monitor-expand
+                div
+              .chartjs-size-monitor-shrink
+                div
+            canvas#myAreaChart.chartjs-render-monitor
+      .col-xl-6
+        .card.mb-4
+          .card-header
+            |  Bar Chart Example 
+          .card-body
+            .chartjs-size-monitor
+              .chartjs-size-monitor-expand
+                div
+              .chartjs-size-monitor-shrink
+                div
+            canvas#myBarChart.chartjs-render-monitor[width="464" height="185" style="display: block; width: 464px; height: 185px;"]
+
+
+
+= javascript_pack_tag 'chart-area.js'
+= javascript_pack_tag 'chart-bar.js'

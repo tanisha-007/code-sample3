@@ -1,0 +1,40 @@
+= simple_form_for @customer, html: { class: 'form-horizontal' } do |customer|
+
+    .form-group.row
+      label.col-sm-2.col-form-label Full Name
+      .col-sm-10
+        = customer.input :full_name, label: false, input_html: { class: 'form-control' }
+
+    .form-group.row
+      label.col-sm-2.col-form-label Email
+      .col-sm-10
+        = customer.input :email, label: false, input_html: { class: 'form-control' }
+
+    .form-group.row
+      label.col-sm-2.col-form-label Address
+      .col-sm-10
+        = customer.input :address_line_1, label: false, input_html: { class: 'form-control' }
+
+    .form-group.row
+      label.col-sm-2.col-form-label City
+      .col-sm-4= customer.input :city, label: false, input_html: { class: 'form-control' }
+      label.col-sm-1.col-form-label State
+      .col-sm-4= customer.input :state, label: false, input_html: { class: 'form-control' }
+        
+
+    .form-group.row
+      label.col-sm-2.col-form-label Country
+      .col-sm-4= customer.input :country, label: false, input_html: { class: 'form-control' }
+      label.col-sm-1.col-form-label Zipcode
+      .col-sm-4= customer.input :zipcode, label: false, input_html: { class: 'form-control' }
+        
+
+    .form-group.row
+      label.col-sm-2.col-form-label Pan Number
+      .col-sm-4= customer.input :pan_number, label: false, input_html: { class: 'form-control' }
+        
+
+    .form-group.row
+      .col-sm-2
+      .col-sm-10
+        = customer.submit "Update", class: 'btn btn-primary float-end'

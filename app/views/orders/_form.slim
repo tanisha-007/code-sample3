@@ -1,0 +1,35 @@
+= simple_form_for @order, html: { class: 'form-horizontal' } do |order|
+
+    .form-group.row
+      label.col-sm-2.col-form-label Customer
+      .col-sm-10
+        = order.input :customer_id, as: :select, collection: Customer.all.map{|customer|[customer.full_name, customer.id]}, label: false, input_html: { class: 'form-control' }
+
+
+    .form-group.row
+      label.col-sm-2.col-form-label Product
+      .col-sm-10
+        = order.input :product_ids, as: :select, collection: Product.all.map{|product|[product.skucode, product.id]}, label: false, input_html: { class: 'form-control', multiple: true }
+
+
+    .form-group.row
+      label.col-sm-2.col-form-label Status
+      .col-sm-10
+        = order.input :status, as: :select, collection: ['Approved', 'In Progress', 'Completed'], label: false, input_html: { class: 'form-control' }
+
+
+    .form-group.row
+      label.col-sm-2.col-form-label Order Date
+      .col-sm-10
+        = order.input :order_date, label: false, input_html: { class: 'form-control' }
+
+    .form-group.row
+      label.col-sm-2.col-form-label Details
+      .col-sm-10
+        = order.input :details, label: false, input_html: { class: 'form-control' }
+
+
+    .form-group.row
+      .col-sm-2
+      .col-sm-10
+        = order.submit "Update", class: 'btn btn-primary float-end'

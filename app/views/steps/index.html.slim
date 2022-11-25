@@ -1,0 +1,38 @@
+main
+  
+  .row
+    .col-sm-8
+      .container-fluid.px-4
+        h1.mt-4 Steps    
+
+        ol.breadcrumb.mb-4
+          li.breadcrumb-item.active
+            | Home -> Steps
+
+    .col-sm-1.mt-5= link_to "New", new_step_path, class: 'btn btn-primary'
+    .col-sm-1.mt-5
+      button.btn.btn-primary[type="button" data-bs-toggle="modal" data-bs-target="#upload_modal"] Upload
+    .col-sm-1.mt-5= link_to "Download", steps_path(format: "csv"),  class: 'btn btn-primary'
+
+
+    .card.mb-4
+      .card-body
+        table.table-striped.table-bordered.table
+          thead
+            tr
+              th
+                | Title
+              th
+                | Description
+              th
+                | Actions  
+          tbody
+            - @steps.each do |step|
+              tr
+                td= step.title
+                td= step.description
+                td
+                  = link_to 'Delete', step_path(step), method: :delete, class: 'text-decoration-none'
+                  = link_to 'Edit', edit_step_path(step), class: 'ml-15 text-decoration-none'
+
+= render 'upload_step_modal'

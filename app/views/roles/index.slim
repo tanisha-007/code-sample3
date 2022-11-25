@@ -1,0 +1,29 @@
+main
+  .row
+    .col-sm-10
+      .container-fluid.px-4
+        h1.mt-4
+          | Roles
+        ol.breadcrumb.mb-4
+          li.breadcrumb-item.active
+            | Home -> Roles
+
+    .col-sm-2= link_to "New", new_role_path, class: 'btn btn-primary'
+
+    .card.mb-4
+      .card-body
+        table.table-striped.table-bordered.table
+          thead
+            tr
+              th
+                | Title
+              th
+                | Action
+          tbody
+            - @roles.each do |role|
+              tr
+                td= role.title
+                td
+                  = link_to 'Delete', role_path(role), method: :delete, class: 'text-decoration-none'
+                  = link_to 'Edit', edit_role_path(role), class: 'ml-15 text-decoration-none'
+

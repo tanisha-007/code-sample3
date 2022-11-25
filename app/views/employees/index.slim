@@ -1,0 +1,43 @@
+main
+  .row
+    .col-sm-8
+      .container-fluid.px-4
+        h1.mt-4
+          | Employees
+        ol.breadcrumb.mb-4
+          li.breadcrumb-item.active
+            | Home -> Employees
+
+    .col-sm-1.mt-5= link_to "New", new_employee_path, class: 'btn btn-primary'
+    .col-sm-1.mt-5
+      button.btn.btn-primary[type="button" data-bs-toggle="modal" data-bs-target="#upload_modal"] Upload
+    .col-sm-1.mt-5= link_to "Download", employees_path(format: "csv"),  class: 'btn btn-primary'
+    
+
+    .card.mb-4
+      .card-body
+        table.table-striped.table-bordered.table
+          thead
+            tr
+              th
+                | Full Name
+              th
+                | Email
+              th
+                | Department
+              th
+                | Role
+              th
+                | Action
+          tbody
+            - @employees.each do |employee|
+              tr
+                td= employee.full_name
+                td= employee.email
+                td= employee.department.title
+                td= employee.role.title
+                td
+                  = link_to 'Delete', employee_path(employee), method: :delete, class: 'text-decoration-none'
+                  = link_to 'Edit', edit_employee_path(employee), class: 'ml-15 text-decoration-none'
+
+= render 'upload_employee_modal'

@@ -1,0 +1,46 @@
+main
+  .row
+    .col-sm-9
+      .container-fluid.px-4
+        h1.mt-4
+          | Customers
+        ol.breadcrumb.mb-4
+          li.breadcrumb-item.active
+            | Home -> Customers
+
+            
+    .col-sm-1.mt-5= link_to "New", new_customer_path, class: 'btn btn-primary'
+    .col-sm-1.mt-5 
+      button.btn.btn-primary[type="button" data-bs-toggle="modal" data-bs-target="#upload_modal"] Upload
+    .col-sm-1.mt-5= link_to "Download", customers_path(format: "csv"),  class: 'btn btn-primary'
+
+    .card.mb-4
+      .card-body
+        table.table-striped.table-bordered.table
+          thead
+            tr
+              th
+                | Full Name
+              th
+                | Email
+              th
+                | Mobile
+              th
+                | Full Address
+              th
+                | PAN Number
+              th
+                | Action
+          tbody
+            - @customers.each do |customer|
+              tr
+                td= customer.full_name
+                td= customer.email
+                td= customer.mobile
+                td= customer.full_address
+                td= customer.pan_number
+                td
+                  = link_to 'Delete', customer_path(customer), method: :delete, class: 'text-decoration-none'
+                  = link_to 'Edit', edit_customer_path(customer), class: 'ml-15 text-decoration-none'
+
+= render 'upload_user_modal'

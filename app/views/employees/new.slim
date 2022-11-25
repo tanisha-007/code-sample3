@@ -1,0 +1,45 @@
+main
+  .container-fluid.px-4
+    h1.mt-4
+      | New Employee
+    ol.breadcrumb.mb-4
+      li.breadcrumb-item.active
+        | Home -> Employee -> New
+
+
+    .card.mb-4
+      .card-header
+        i.fas.fa-table.me-1
+        |
+      .card-body
+        = simple_form_for :employee, url:employees_path, method: :post, html: { class: 'form-horizontal' } do |employee|
+
+            .form-group.row
+              label.col-sm-2.col-form-label Full Name
+              .col-sm-10
+                = employee.input :full_name, label: false, input_html: { class: 'form-control' }
+
+            .form-group.row
+              label.col-sm-2.col-form-label Email
+              .col-sm-10
+                = employee.input :email, label: false, input_html: { class: 'form-control' }
+
+            .form-group.row
+              label.col-sm-2.col-form-label Password
+              .col-sm-10
+                = employee.input :password, label: false, input_html: { class: 'form-control' }
+
+            .form-group.row
+              
+              label.col-sm-2.col-form-label Department
+              .col-sm-4= employee.input :department_id, as: :select, collection:Department.all.map{|department|[department.title, department.id]}, label: false, input_html: { class: 'form-control' }
+              
+              label.col-sm-1.col-form-label Role
+              .col-sm-4= employee.input :role_id, as: :select, collection:Role.all.map{|role|[role.title, role.id]}, label: false, input_html: { class: 'form-control' }
+                        
+            .form-group.row
+              .col-sm-2
+              .col-sm-10
+                = employee.submit "Update", class: 'btn btn-primary float-end'      
+          
+

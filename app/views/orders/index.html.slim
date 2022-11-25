@@ -1,0 +1,62 @@
+main
+  .row
+    .col-sm-10
+      .container-fluid.px-4
+        h1.mt-4
+          | Orders
+        ol.breadcrumb.mb-4
+          li.breadcrumb-item.active
+            | Home -> Orders
+
+    .col-sm-2.mt-5= link_to "New", new_customer_path, class: 'btn btn-primary'
+
+    .row
+      .col-md-10.col.offset-md-1
+        ul#myTab.nav.nav-tabs[role="tablist"]
+          li.nav-item[role="presentation"]
+            a#home-tab.nav-link.active[data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"]
+              | List
+          li.nav-item[role="presentation"]
+            a#profile-tab.nav-link[data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"]
+              | Steps
+          li.nav-item[role="presentation"]
+            a#contact-tab.nav-link[data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"]
+              | Payments
+        #myTabContent.tab-content
+          #home.tab-pane.fade.show.active[role="tabpanel" aria-labelledby="home-tab"]
+            .card.mb-4
+              .card-body
+                table.table-striped.table-bordered.table
+                  thead
+                    tr
+                      th
+                        | Customer
+                      th
+                        | Status
+                      th
+                        | Order Date
+                      th
+                        | Products
+                      th
+                        | Amount
+                      th
+                        | Action
+                  tbody
+                    - @orders.each do |order|
+                      tr
+                        td= order.customer.try(:full_name)
+                        td= order.status
+                        td= order.order_date
+                        td= order.products.map(&:title)
+                        td= order.amount
+                        td
+                          = link_to 'Delete', order_path(order), method: :delete, class: 'text-decoration-none'
+                          = link_to 'Show', order_path(order), class: 'ml-15 text-decoration-none'                          
+                          = link_to 'Edit', edit_order_path(order), class: 'ml-15 text-decoration-none'
+
+
+          
+          #profile.tab-pane.fade[role="tabpanel" aria-labelledby="profile-tab"]
+            | ...
+          #contact.tab-pane.fade[role="tabpanel" aria-labelledby="contact-tab"]
+            | Anand

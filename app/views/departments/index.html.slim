@@ -1,0 +1,34 @@
+main
+  .row
+    .col-sm-8
+      .container-fluid.px-4
+        h1.mt-4
+          | Departments
+        ol.breadcrumb.mb-4
+          li.breadcrumb-item.active
+            | Home -> Departments
+
+    .col-sm-1.mt-5= link_to "New", new_department_path, class: 'btn btn-primary'
+    .col-sm-1.mt-5
+      button.btn.btn-primary[type="button" data-bs-toggle="modal" data-bs-target="#upload_modal"] Upload
+    .col-sm-1.mt-5= link_to "Download", departments_path(format: "csv"),  class: 'btn btn-primary'
+
+
+    .card.mb-4
+      .card-body
+        table.table-striped.table-bordered.table
+          thead
+            tr
+              th
+                | Title
+              th
+                | Action
+          tbody
+            - @departments.each do |department|
+              tr
+                td= department.title
+                td
+                  = link_to 'Delete', department_path(department), method: :delete, class: 'text-decoration-none'
+                  = link_to 'Edit', edit_department_path(department), class: 'ml-15 text-decoration-none'
+
+= render 'upload_department_modal'

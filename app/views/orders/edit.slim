@@ -1,0 +1,16 @@
+main
+  .container-fluid.px-4
+    h1.mt-4
+      | Edit Order
+    ol.breadcrumb.mb-4
+      li.breadcrumb-item.active
+        | Home -> Order -> Edit
+
+
+    .card.mb-4
+      .card-header
+        i.fas.fa-table.me-1
+        |
+      .card-body= render 'orders/form'
+  
+

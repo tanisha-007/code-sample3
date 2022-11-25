@@ -1,0 +1,36 @@
+main
+  .row
+    .col-sm-8
+      .container-fluid.px-4
+        h1.mt-4
+          | Categories
+        ol.breadcrumb.mb-4
+          li.breadcrumb-item.active
+            | Home -> categories
+
+    .col-sm-1.mt-5= link_to "New", new_category_path, class: 'btn btn-primary'
+    .col-sm-1.mt-5
+      button.btn.btn-primary[type="button" data-bs-toggle="modal" data-bs-target="#upload_modal"] Upload
+    .col-sm-1.mt-5= link_to "Download", categories_path(format: "csv"),  class: 'btn btn-primary'
+
+    .card.mb-4
+      .card-body
+        table.table-striped.table-bordered.table
+          thead
+            tr
+              th
+                | Title
+              th
+                | Description
+              th
+                | Action
+          tbody
+            - @categories.each do |category|
+              tr
+                td= category.title
+                td= category.description
+                td
+                  = link_to 'Delete', category_path(category), method: :delete, class: 'text-decoration-none'
+                  = link_to 'Edit', edit_category_path(category), class: 'ml-15 text-decoration-none'
+
+= render 'upload_category_modal'

@@ -1,0 +1,27 @@
+= simple_form_for @product, html: { class: 'form-horizontal' } do |product|
+
+    .form-group.row
+      label.col-sm-2.col-form-label Title
+      .col-sm-10
+        = product.input :title, label: false, input_html: { class: 'form-control' }
+
+    .form-group.row
+      label.col-sm-2.col-form-label Description
+      .col-sm-10
+        = product.input :description, label: false, input_html: { class: 'form-control' }
+
+    .form-group.row
+      label.col-sm-2.col-form-label Category
+      .col-sm-10
+        = product.input :category_id, as: :select, collection: Category.all.map{ |category|[category.title, category.id] }, label: false, input_html: { class: 'form-control' }
+
+    .form-group.row
+      label.col-sm-2.col-form-label Skucode
+      .col-sm-4= product.input :skucode, label: false, input_html: { class: 'form-control' }        
+      label.col-sm-1.col-form-label Price
+      .col-sm-4= product.input :price, label: false, input_html: { class: 'form-control' }
+
+    .form-group.row
+      .col-sm-2
+      .col-sm-10
+        = product.submit "Update", class: 'btn btn-primary float-end'

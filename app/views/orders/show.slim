@@ -1,0 +1,46 @@
+main
+  .row
+    .col-sm-10
+      .container-fluid.px-4
+        h1.mt-4= "Order #{@order.id}"
+        ol.breadcrumb.mb-4
+          li.breadcrumb-item.active
+            | detail -> Order -> Show
+
+    .row
+      .col-md-10.col.offset-md-1
+        ul#myTab.nav.nav-tabs[role="tablist"]
+          li.nav-item[role="presentation"]
+            a#detail-tab.nav-link.active[data-bs-toggle="tab" href="#detail" role="tab" aria-controls="detail" aria-selected="true"]
+              | Details
+          li.nav-item[role="presentation"]
+            a#customer-tab.nav-link[data-bs-toggle="tab" href="#customer" role="tab" aria-controls="customer" aria-selected="true"]
+              | Customer
+          li.nav-item[role="presentation"]
+            a#profile-tab.nav-link[data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"]
+              | Steps
+          li.nav-item[role="presentation"]
+            a#contact-tab.nav-link[data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"]
+              | Payments
+          li.nav-item[role="presentation"]
+            a#contact-tab.nav-link[data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"]
+              | Tracking
+        #myTabContent.tab-content
+          
+          #detail.tab-pane.fade.show.active[role="tabpanel" aria-labelledby="detail-tab"]
+            .col-md-8.mt-5
+              table.table.table-borderless
+                tr
+                  td Order ID  
+                  td= @order.id
+                tr
+                  td Order Status
+                  td= @order.status
+                tr
+                  td Order Date
+                  td= @order.order_date.strftime("%FT%T")
+
+          #customer.tab-pane.fade.show.active[role="tabpanel" aria-labelledby="customer-tab"]
+          #profile.tab-pane.fade[role="tabpanel" aria-labelledby="profile-tab"]
+          #contact.tab-pane.fade[role="tabpanel" aria-labelledby="contact-tab"]
+            | Anand

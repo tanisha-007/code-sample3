@@ -1,0 +1,16 @@
+main
+  .container-fluid.px-4
+    h1.mt-4
+      | Edit Product
+    ol.breadcrumb.mb-4
+      li.breadcrumb-item.active
+        | Home -> Product -> Edit
+
+
+    .card.mb-4
+      .card-header
+        i.fas.fa-table.me-1
+        |
+      .card-body= render 'products/form'
+  
+

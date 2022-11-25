@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  references: 
+  amount: 1
+  details: MyText
+  status: MyString
+  order_date: 2021-12-25 21:18:40
+
+two:
+  references: 
+  amount: 1
+  details: MyText
+  status: MyString
+  order_date: 2021-12-25 21:18:40

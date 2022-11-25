@@ -1,0 +1,16 @@
+= simple_form_for @step, html: { class: 'form-horizontal' } do |step|
+
+    .form-group.row
+      label.col-sm-2.col-form-label Title
+      .col-sm-10
+        = step.input :title, label: false, input_html: { class: 'form-control' }
+
+    .form-group.row
+      label.col-sm-2.col-form-label Description
+      .col-sm-10
+        = step.input :description, label: false, input_html: { class: 'form-control' }
+
+    .form-group.row
+      .col-sm-2
+      .col-sm-10
+        = step.submit "Update", class: 'btn btn-primary float-end'

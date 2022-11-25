@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    title
+      | DivineSky
+    meta[name="viewport" content="width=device-width,initial-scale=1"]
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  body.sb-nav-fixed
+    
+    = render "shared/navbar"
+    
+    #layoutSidenav
+      #layoutSidenav_nav= render "shared/sidebar" if employee_signed_in?
+        
+      #layoutSidenav_content
+        = render "shared/flash_messages"
+        = yield
+        = render 'shared/footer'
